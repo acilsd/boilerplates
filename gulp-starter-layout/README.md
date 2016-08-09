@@ -1,1 +1,1 @@
-# Sample project structure that i use
+# Simple boilerplate for gulp-layout tasks
