@@ -5,11 +5,11 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  context: path.join(__dirname, '/dist'),
+  context: path.join(__dirname, '/src'),
   entry: './index',
   output: {
-    path: path.join(__dirname, '/app'),
-    publicPath: '/app/',
+    path: path.join(__dirname, '/build'),
+    publicPath: '/build/',
     filename: 'bundle.js'
   },
   devtool: NODE_ENV == 'development' ? 'cheap-inline-module-source-map' : null,
