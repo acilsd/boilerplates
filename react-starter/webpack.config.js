@@ -67,6 +67,7 @@ if (NODE_ENV == 'production') {
         drop_console:   true,
         unsafe:         true
       }
-    })
+    }),
+    new webpack.optimize.DedupePlugin()
   );
 }
