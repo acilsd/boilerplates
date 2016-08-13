@@ -3,6 +3,8 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require('webpack');
 const path = require('path');
+const autoprefixer = require('autoprefixer');
+
 
 module.exports = {
   context: path.join(__dirname, '/src'),
@@ -47,10 +49,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader",
-        exclude: [/node_modules/]
+        exclude: [/node_modules/],
+        loaders: [ 'style', 'css?sourceMap', 'postcss' ]
+      },
+      {
+        test: /\.scss$/,
+        exclude: [/node_modules/],
+        loaders: [ 'style', 'css?sourceMap', 'postcss', 'sass?sourceMap' ]
       }
     ]
+  },
+  postcss: function(){
+    return {
+      plugins: [autoprefixer({browsers: ['last 2 versions', 'IE 10']})]
+    };
   },
   devServer: {
     devtool: 'cheap-inline-module-source-map',
