@@ -4,6 +4,7 @@
   "description": "react-flux-redux",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "build": "set NODE_ENV=production&&webpack",
     "wds": "webpack-dev-server --debug --output-pathinfo --watch --colors --inline --port 8080"
   },
