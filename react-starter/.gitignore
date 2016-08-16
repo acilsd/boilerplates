@@ -1,7 +1,7 @@
-/node_modules
+.DS_Store
+node_modules
 npm-debug.log
 *.log
-
 #IntelliJ
 *.iml
 /.idea
@@ -10,3 +10,4 @@ npm-debug.log
 *.msi
 *.msm
 *.msp
+*.exe
