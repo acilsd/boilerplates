@@ -11,7 +11,7 @@ module.exports = {
   entry: ['babel-polyfill', './index'],
   output: {
     path: path.join(__dirname, '/build'),
-    publicPath: '/build/',
+    publicPath: '/',
     filename: 'bundle.js'
   },
   devtool: NODE_ENV == 'development' ? 'cheap-inline-module-source-map' : null,
@@ -50,12 +50,16 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: [/node_modules/],
-        loaders: [ 'style', 'css?sourceMap', 'postcss' ]
+        loaders: [ 'style', 'css' ]
       },
       {
         test: /\.scss$/,
         exclude: [/node_modules/],
         loaders: [ 'style', 'css?sourceMap', 'postcss', 'sass?sourceMap' ]
+      },
+      {
+        test: /\.styl$/,
+        loaders: [ 'style', 'css?sourceMap', 'postcss', 'stylus']
       }
     ]
   },
