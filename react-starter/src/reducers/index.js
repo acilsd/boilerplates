@@ -1,4 +1,8 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import page from './page';
+import user from './user';
 
-export default rootReducer;
+export default combineReducers({
+  page,
+  user
+});
