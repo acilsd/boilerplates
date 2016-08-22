@@ -7,7 +7,7 @@ const port = process.env.PORT || 8090;
 
 app.use(express.static(__dirname + '/build/'));
 
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 

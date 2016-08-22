@@ -6,10 +6,10 @@ export default class Page extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(e) {
-    this.props.setYear(+e.target.textContent);
+    this.props.getPhotos(+e.target.textContent);
   }
   render() {
-    const { year, photos } = this.props;
+    const { year, photos, fetching } = this.props;
     return (
       <div>
         <p>
@@ -18,7 +18,12 @@ export default class Page extends Component {
           <button onClick={this.handleClick}>2014</button>
         </p>
         <h3>{year} Year</h3>
-        <p>You have {photos.length} photos.</p>
+        {
+          fetching ?
+            <p>Loading...</p>
+          :
+            <p>You have {photos.length} photos</p>
+        }
       </div>
     );
   }
@@ -27,5 +32,5 @@ export default class Page extends Component {
 Page.propTypes = {
   photos: PropTypes.array.isRequired,
   year: PropTypes.number.isRequired,
-  setYear: PropTypes.func.isRequired
+  getPhotos: PropTypes.func.isRequired
 };
