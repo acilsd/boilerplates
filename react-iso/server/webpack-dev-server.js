@@ -3,7 +3,7 @@ import express from 'express';
 import webpack from 'webpack';
 const { host, port, webpackPort } = require('../config/config-env');
 
-const webpackConfig = {};
+const webpackConfig = require('../webpack/webpack.config.dev');
 
 const compiler = webpack(webpackConfig);
 
