@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+npm-debug.log
+*.log
+#IntelliJ
+*.iml
+/.idea
+
+*.cab
+*.msi
+*.msm
+*.msp
+*.exe
