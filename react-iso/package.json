@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
-  "version": "0.0.3",
-  "description": "react-flux-redux",
+  "name": "react-iso",
+  "version": "0.0.1",
+  "description": "react-express isomorphic app",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
