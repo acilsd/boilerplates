@@ -1,6 +1,6 @@
 {
   "name": "react-iso",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react-express isomorphic app",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "eslint-plugin-promise": "^2.0.0",
     "eslint-plugin-react": "^6.0.0",
     "eslint-plugin-standard": "^2.0.0",
-    "file-loader": "^0.9.0",  
+    "file-loader": "^0.9.0",
     "node-sass": "^3.8.0",
     "postcss-loader": "^0.9.1",
     "react-addons-test-utils": "^15.2.1",
