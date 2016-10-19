@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import page from './page';
-import user from './user';
+import todos from './reducer-todo';
 
-export default combineReducers({
-  page,
-  user
+const rootReducer = combineReducers({
+  todos
 });
+
+export default rootReducer;
