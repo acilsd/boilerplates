@@ -35,7 +35,7 @@ module.exports = {
         exclude: [/node_modules/],
         loader: 'babel',
         query: {
-          presets: ['react', 'es2015', 'stage-0', 'stage-1'],
+          presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
         }
       },
@@ -76,13 +76,18 @@ module.exports = {
 
 if (NODE_ENV == 'production') {
   module.exports.plugins.push(
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings:       false,
         drop_console:   true,
         unsafe:         true
-      }
-    }),
-    new webpack.optimize.DedupePlugin()
+      },
+      mangle: true,
+      sourcemap: false,
+      beautify: false,
+      dead_code: true
+    })
   );
 }
