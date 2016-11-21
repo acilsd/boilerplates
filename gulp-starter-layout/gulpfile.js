@@ -1,16 +1,20 @@
 'use strict';
+/*eslint no-console: "off"*/
+const gulp            = require('gulp');
+const  gutil          = require('gulp-util' );
+const  sass           = require('gulp-sass');
+const  browserSync    = require('browser-sync');
+const  cleanCSS       = require('gulp-clean-css');
+const  del            = require('del');
+const  imagemin       = require('gulp-imagemin');
+const  pngquant       = require('imagemin-pngquant');
+const  cache          = require('gulp-cache');
+const  autoprefixer   = require('gulp-autoprefixer');
+const  fileinclude    = require('gulp-file-include');
+const  gulpRemoveHtml = require('gulp-remove-html');
+const  notify         = require("gulp-notify");
 
-var gulp = require('gulp'),
-    watch = require('gulp-watch'),
-    prefixer = require('gulp-autoprefixer'),
-    sass = require('gulp-sass'),
-    cleanCSS = require('gulp-clean-css'),
-    imagemin = require('gulp-imagemin'),
-    pngquant = require('imagemin-pngquant'),
-    plumber = require('gulp-plumber'),
-    uglify = require('gulp-uglify');
-
-var path = {
+const path = {
   build: {
     css: 'build/css/',
     img: 'build/img/',
@@ -26,46 +30,59 @@ var path = {
   }
 };
 
-gulp.task('style:build', function(){
-  gulp.src(path.src.style)
-    .pipe(plumber())
-    .pipe(sass({includePaths: require('node-normalize-scss').includePaths})
-      .on('error', function(err){
-      console.log("error: " + err.message);
-      this.emit('end');
-    }))
-    .pipe(prefixer({
-      browsers: ['last 2 versions', 'IE 10']
-    }))
-    .pipe(cleanCSS())
-    .pipe(gulp.dest(path.build.css));
-});
-
-gulp.task('image:build', function(){
-  gulp.src(path.src.img)
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()],
-      interlaced: true
-    }))
-    .pipe(gulp.dest(path.build.img))
-});
-
-gulp.task('js:build', function() {
-  gulp.src(path.src.js)
-    .pipe(uglify())
-    .pipe(gulp.dest(path.build.js));
-});
-
-gulp.task('build', [
-  'style:build'
-]);
-
-gulp.task('watch', function() {
-  watch([path.watch.style], function(event, cb) {
-    gulp.start('style:build');
+//choose the right directory to sevre static files
+//i prefer the build one (or [public], does not matter)
+gulp.task('browser-sync', function() {
+  browserSync({
+    // server: true,
+    server: {
+      baseDir: 'build'
+    },
+    notify: false
   });
 });
 
-gulp.task('default', ['build', 'watch']);
+// NOTE: compile our prepors stuff
+gulp.task('sass', function() {
+  return gulp.src(path.src.style)
+		.pipe(sass({includePaths: require('node-normalize-scss').includePaths})
+    .on("error", notify.onError()))
+		.pipe(autoprefixer(['last 2 versions', 'IE 10']))
+		.pipe(cleanCSS())
+		.pipe(gulp.dest(path.build.css))
+		.pipe(browserSync.reload({stream: true}));
+});
+
+// NOTE: main task, build scss => build images => watch'n'reload
+gulp.task('watch', ['sass', 'imagemin', 'browser-sync'], function() {
+  gulp.watch(path.src.style, ['sass']);
+  gulp.watch('build/*.html', browserSync.reload);
+});
+
+// NOTE: build images
+gulp.task('imagemin', function() {
+  return gulp.src(path.src.img)
+		.pipe(cache(imagemin({
+  interlaced: true,
+  progressive: true,
+  svgoPlugins: [{removeViewBox: false}],
+  use: [pngquant()],
+})))
+		.pipe(gulp.dest(path.build.img));
+});
+
+// NOTE: remove existing build __dirname
+gulp.task('removedist', function() { return del.sync('build'); });
+
+// NOTE: default build task
+gulp.task('build', [
+  'removedist',
+  'imagemin',
+  'sass',
+]);
+
+// NOTE: sometimes u need to clear cache, hue hue
+gulp.task('clearcache', function () { return cache.clearAll(); });
+
+// NOTE: '$ gulp' => profit
+gulp.task('default', ['watch']);
