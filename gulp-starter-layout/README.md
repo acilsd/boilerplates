@@ -4,6 +4,6 @@
 ## no js tasks cuz i prefer Webpack
 
 ```start
-*** $npm i
-*** $gulp
-*** localhost:3000
+$npm i
+$gulp
+localhost:3000
