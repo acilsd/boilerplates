@@ -1,6 +1,6 @@
 {
   "name": "gulpstarter",
-  "version": "1.0.0",
+  "version": "2.0.3",
   "description": "simple boilerplate",
   "main": "gulpfile.js",
   "scripts": {
@@ -33,7 +33,7 @@
     "gulp-sass": "^2.2.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
-    "imagemin-pngquant": "^5.0.0",  
+    "imagemin-pngquant": "^5.0.0",
     "imagemin-pngquant": "^4.2.2",
     "node-normalize-scss": "^1.3.1",
     "throttle-debounce": "^1.0.1",
