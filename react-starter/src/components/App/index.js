@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import Header from '../Header/';
 import MainSection from '../MainSection/';
 import * as TodoActions from '../../actions';
+import { DevTools } from '../../utils/index';
 
 const App = ({todos, actions}) => (
   <div>
     <Header addTodo={actions.addTodo} />
     <MainSection todos={todos} actions={actions} />
+    { process.env.NODE_ENV !== 'production' ? <DevTools/> : null }
   </div>
 );
 

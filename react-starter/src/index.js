@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import App from './components/App/';
 import styles from './style/custom.css';
-import routes from './routes';
+//import routes from './routes';
 
 const store = configureStore();
 
