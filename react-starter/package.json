@@ -69,6 +69,7 @@
     "lodash": "^4.13.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-router-redux": "^4.0.7",
     "webpack": "^1.13.3"
   }
 }
