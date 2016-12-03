@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "set NODE_ENV=production&&webpack",
-    "wds": "webpack-dev-server --debug --output-pathinfo --watch --colors --inline --port 8080",
+    "wds": "webpack-dev-server --debug --content-base build/ --output-pathinfo --watch --colors --inline --port 8080",
     "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'src/**/spec.js'"
   },
   "author": "acilsd",
@@ -18,7 +18,7 @@
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-react-html-attrs": "^2.0.0",    
+    "babel-plugin-react-html-attrs": "^2.0.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
