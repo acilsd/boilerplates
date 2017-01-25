@@ -5,10 +5,9 @@ const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
-
 module.exports = {
   context: path.join(__dirname, '/src'),
-  entry: ['babel-polyfill', './index'],
+  entry: ['./index'],
   output: {
     path: path.join(__dirname, '/build'),
     publicPath: '/',
@@ -33,11 +32,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.(jpg|jpeg|gif|png)$/,
@@ -50,15 +45,11 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: [/node_modules/],
-        loaders: [ 'style', 'css', 'postcss' ]
+        loaders: [ 'style-loader', 'css-loader', 'postcss-loader' ]
       },
       {
         test: /\.scss$/,
-        loaders: [ 'style', 'css?sourceMap', 'postcss', 'sass' ]
-      },
-      {
-        test: /\.styl$/,
-        loaders: [ 'style', 'css?sourceMap', 'postcss', 'stylus']
+        loaders: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ]
       }
     ]
   },
@@ -78,16 +69,23 @@ if (NODE_ENV == 'production') {
   module.exports.plugins.push(
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings:       false,
-        drop_console:   true,
-        unsafe:         true
-      },
+      beautify: false,
+      comments: false,
       mangle: true,
       sourcemap: false,
-      beautify: false,
-      dead_code: true
+      compress: {
+        booleans: true,
+        conditionals: true,
+        dead_code: true,
+        drop_console: true,
+        if_return: true,
+        join_vars: true,
+        sequences: true,
+        unused: true,
+        warnings: false,
+      }
     })
   );
 }

@@ -10,7 +10,7 @@ class Modal extends Component {
 
   constructor(props) {
     super(props);
-    this.cloe = this.close.bind(this);
+    this.close = this.close.bind(this);
   }
 
   close() {
