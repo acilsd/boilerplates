@@ -1,6 +1,6 @@
 ##Simple React-Webpack boilerplate
 
-My own hand-made noilerplate :3
+My own hand-made boilerplate :3
 If something works just fine why would you complicate it?
 
 ---
@@ -13,7 +13,9 @@ If something works just fine why would you complicate it?
 *  One-file prod'n'dev config
 *  Unit tests (deprecated and deleted for now)
 
+
 Nope, this does not include any linters scripts, you can use your own (im using one built in my IDE)
+
 ---
 
 ### How can i make this work?
