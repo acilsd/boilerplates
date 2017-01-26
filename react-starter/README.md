@@ -28,7 +28,7 @@ Nope, this does not include any linters scripts, you can use your own (im using 
 ### Future improvements:
 
 *  Migrate to Webpack 2
-*  Swith to yarn for fuk sake (im too lazy, yep)
+*  Switch to yarn for fuk sake (im too lazy, yep)
 *  React-router v4
 *  React-hot-loader v3
 *  Tree-shaking and lazy loading
