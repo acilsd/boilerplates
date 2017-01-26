@@ -1,10 +1,34 @@
-##basic webpack boilerplate***
-####Using:
-	$npm install
+##Simple React-Webpack boilerplate
 
-	$npm run wds for webpack-development-sever
-	(HMR enabled by default)
+My own hand-made noilerplate :3
+If something works just fine why would you complicate it?
 
-	$npm run build for production build
+---
+### Whats inside:
 
-	$webpack for a simple development build+watch (without WDS and HMR)
+*  React
+*  Redux
+*  React-router
+*  Webpack
+*  One-file prod'n'dev config
+*  Unit tests (deprecated and deleted for now)
+
+Nope, this does not include any linters scripts, you can use your own (im using one built in my IDE)
+---
+
+### How can i make this work?
+
+*  `npm install`
+*  `npm run wds`
+*  `npm build`
+*  `npm test` (deleted for now)
+
+---
+
+### Future improvements:
+
+*  Migrate to Webpack 2
+*  React-router v4
+*  React-hot-loader v3
+*  Tree-shaking and lazy loading
+*  Proper setup for testing
