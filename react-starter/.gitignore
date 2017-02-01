@@ -1,5 +1,9 @@
 node_modules
 npm-debug.log
+public/app.bundle.js
+public/app.bundle.js.gz
+public/vendor.bundle.js
+public/vendor.bundle.js.gz
 *.log
 #IntelliJ
 *.iml
