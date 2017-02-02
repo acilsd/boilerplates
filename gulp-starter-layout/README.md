@@ -1,9 +1,19 @@
-# Simple boilerplate for gulp-layout tasks
-## by default static content is serving from /build/
-## gulp is watching for /build/ (*html*) and /src (*css*)
-## no js tasks cuz i prefer Webpack
+## Simple boilerplate for gulp-layout tasks
 
-```start
-$npm i
-$gulp
-localhost:3000
+### Whats inside:
+
+*  Gulp
+*  SCSS
+*  Image optimization
+*  Browser-sync
+*  Cache'n'folders clearing
+
+---
+
+### How can i make this work?
+
+*  `npm install`
+*  `gulp` - default task, compiles scss, watching for changes, serves content
+*  `removedist` - clear build directory
+*  `imagemin` - optimize and save images
+*  `clearcache` - nuff said 
