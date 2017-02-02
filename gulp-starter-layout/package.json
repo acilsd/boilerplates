@@ -1,12 +1,10 @@
 {
   "name": "gulpstarter",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "simple boilerplate",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "nodemon server.js",
-    "build": "set NODE_ENV=production&&webpack",
-    "wds": "webpack-dev-server --debug --output-pathinfo --watch --colors --inline --port 8080"
+    "start": "nodemon server.js"
   },
   "author": "acilsd",
   "license": "ISC",
@@ -33,6 +31,6 @@
   "dependencies": {
     "eslint": "^3.2.2",
     "express": "^4.14.0",
-    "gulp": "^3.9.1"    
+    "gulp": "^3.9.1"
   }
 }
