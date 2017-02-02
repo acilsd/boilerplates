@@ -13,7 +13,7 @@
 ### How can i make this work?
 
 *  `npm install`
-*  `gulp` - default task, compiles scss, watching for changes, serves content
+*  `gulp` - default
 *  `removedist` - clear build directory
 *  `imagemin` - optimize and save images
-*  `clearcache` - nuff said 
+*  `clearcache` - nuff said
