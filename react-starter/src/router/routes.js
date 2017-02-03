@@ -1,16 +1,28 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-import Countdown from '../components/Countdown';
-import Timer from '../components/Timer';
+import Login from '../components/Login';
+import Main from '../components/Main/';
+import Add from '../components/Add/';
+import ErrorPage from '../components/Error';
 
-const AppRoutes = () => {
+import ProtectedRoute from './redirect';
+
+const AppRoutes = ({isLoggedIn}) => {
   return (
-    <div>
-      <Route exact path='/' component={Countdown}/>
-      <Route path='/timer' component={Timer}/>
-    </div>
+    <Switch>
+      <Route exact path='/' component={Login}/>
+      <ProtectedRoute path='/main' status={isLoggedIn} component={Main} />
+      <ProtectedRoute path='/add' status={isLoggedIn} component={Add} />
+      <Route component={ErrorPage}/>
+    </Switch>
   );
 };
 
-export default AppRoutes;
+const mapStateToProps = state => ({
+  isLoggedIn: state.user.loggedIn
+});
+
+export default connect(mapStateToProps, actions)(AppRoutes);

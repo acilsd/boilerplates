@@ -1,0 +1,40 @@
+.modal {
+  position: fixed;
+  width: 480px;
+  height: 190px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: auto;
+  z-index: 1000;
+  background-color: #fff;
+  border: 2px solid rgba(227, 100, 100, 0.8);;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  & p {
+    text-transform: uppercase;
+  }
+  .btn {
+    width: 50%;   
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: none;
+    outline: none;
+    background-color: rgba(36, 209, 59, 0.3);
+    &:hover {
+      cursor: pointer;
+      outline: 1px solid #24D13B;
+    }
+    &--red {
+      background-color: rgba(227, 100, 100, 0.3);
+      &:hover {
+        cursor: pointer;
+        outline: 1px solid #E36464;
+      }
+    }
+  }
+}

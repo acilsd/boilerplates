@@ -1,4 +1,13 @@
 {
-  "presets": [ "es2015", "stage-0", "react" ],
-  "plugins": [ "react-html-attrs", "transform-class-properties", "transform-decorators-legacy" ]
+  "presets": [
+    ["es2015", { "modules": false }],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-class-properties",
+    "react-html-attrs",
+    "transform-decorators-legacy"
+  ]
 }

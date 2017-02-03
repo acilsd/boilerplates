@@ -1,10 +1,10 @@
 import React from 'react';
-import { Redirect, Match } from 'react-router';
+import { Route, Redirect } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, status, ...rest }) => (
-  <Match {...rest} render={props => (
+const ProtectedRoute = ({ component, status, ...rest }) => (
+  <Route {...rest} render={props => (
     status ? (
-      <Component {...props}/>
+      React.createElement(component, props)
     ) : (
       <Redirect to={{
         pathname: '/'

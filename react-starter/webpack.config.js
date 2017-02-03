@@ -77,12 +77,20 @@ module.exports = function(env) {
     devtool: TO_PROD ? 'null' : 'cheap-inline-module-source-map',
     context: srcPath,
     entry: {
-      js: './index.js',
-      vendor: ['react', "react-dom", "react-router"]
+      app: [
+        'react-hot-loader/patch',
+        './index.js'
+      ],
+      vendor: [
+        'react-hot-loader/patch',           
+        'react',
+        'react-dom'
+      ]
     },
     output: {
       path: buildPath,
       filename: 'app.bundle.js',
+      publicPath: '/'
     },
     module: {
       rules: [
@@ -148,11 +156,12 @@ module.exports = function(env) {
     },
     devServer: {
       contentBase: './public',
+      publicPath: '/',
       historyApiFallback: true,
       port: 8080,
       compress: TO_PROD,
-      inline: !TO_PROD,
-      hot: !TO_PROD,
+      inline: true,
+      hot: true,
       stats: {
         assets: true,
         children: false,

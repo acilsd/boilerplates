@@ -1,0 +1,93 @@
+.modal-form {
+  min-width: 480px;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  text-align: center;
+  p {
+    margin-bottom: 30px;
+  }
+}
+
+.modal-input {
+  width: 30%;
+  margin-bottom: 5px;
+  border: none;
+  padding: 5px 10px;
+  outline: 1px solid rgba(36, 209, 59, 0.5);
+  &.invalid {
+    outline: 1px solid rgba(227, 100, 100, 0.5);
+    &:focus {
+      outline: 1px solid rgba(227, 100, 100, 1);
+    }
+  }
+  &:focus {
+    outline: 1px solid rgba(36, 209, 59, 1);
+  }
+  @media only screen and (max-width: 625px) {
+    width: 100%;
+  }
+}
+
+.modal-text {
+  width: 100%;
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 30px;
+  min-height: 200px;
+  resize: none;
+  outline: 1px solid rgba(36, 209, 59, 0.5);
+  &.invalid {
+    outline: 1px solid rgba(227, 100, 100, 0.5);
+    &:focus {
+      outline: 1px solid rgba(227, 100, 100, 1);
+    }
+  }
+  &:focus {
+    outline: 1px solid rgba(36, 209, 59, 1);
+  }
+}
+
+.inputs {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .btn {
+    width: 250px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.9em;
+    border: none;
+    outline: none;
+    background-color: rgba(36, 209, 59, 0.3);
+    &:hover {
+      cursor: pointer;
+      outline: 1px solid #24D13B;
+    }
+    &--red {
+      background-color: rgba(227, 100, 100, 0.3);
+      &:hover {
+        cursor: pointer;
+        outline: 1px solid #E36464;
+      }
+    }
+  }
+}

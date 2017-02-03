@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import file from './file';
-import { routerReducer } from 'react-router-redux'; 
+import todo from './todo';
+import modals from './modals';
+import user from './user';
 
 const rootReducer = combineReducers({
-  routing: routerReducer,
-  file
+  todo,
+  modals,
+  user
 });
 
 export default rootReducer;
