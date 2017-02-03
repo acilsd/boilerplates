@@ -26,6 +26,8 @@ Nope, this does not include any linters scripts, you can use your own (im using 
 *  `npm build`
 *  `npm test` (deleted for now)
 
+Warn: styles in demo-app are broken
+
 ---
 
 ### Future improvements:

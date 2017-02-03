@@ -1,35 +1,20 @@
-import React, { PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import Header from '../Header/';
-import MainSection from '../MainSection/';
-import * as TodoActions from '../../actions';
+import React from 'react';
+import normalize from '../../../node_modules/node-normalize-scss/_normalize.scss';
 
-//import { DevTools } from '../../utils/index';
-//{ process.env.NODE_ENV !== 'production' ? <DevTools/> : null }
+import NavBar from '../NavBar';
+import { AppRoutes } from '../../router';
 
-const App = ({todos, actions}) => (
-  <div>
-    <Header addTodo={actions.addTodo} />
-    <MainSection todos={todos} actions={actions} />
-
-  </div>
-);
-
-App.propTypes = {
-  todos: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+const App = () => {
+  return (
+    <div>
+      <NavBar />
+      <div class='row'>
+        <div class='column small-centered medium-6 large-4'>
+          <AppRoutes />
+        </div>
+      </div>
+    </div>
+  );
 };
 
-const mapStateToProps = state => ({
-  todos: state.todos
-});
-
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(TodoActions, dispatch)
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
