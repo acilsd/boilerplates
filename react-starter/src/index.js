@@ -1,15 +1,12 @@
 import 'react-hot-loader/patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import configureStore from './store/configureStore';
+import foundation from 'foundation-sites/dist/css/foundation.min.css';
 
 import App from './components/App';
-
-const store = configureStore();
 
 const container = document.getElementById('container');
 
@@ -17,9 +14,7 @@ const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <Router>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <App />
       </Router>
     </AppContainer>,
     container

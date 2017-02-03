@@ -82,7 +82,7 @@ module.exports = function(env) {
         './index.js'
       ],
       vendor: [
-        'react-hot-loader/patch',           
+        'react-hot-loader/patch',
         'react',
         'react-dom'
       ]
@@ -117,8 +117,7 @@ module.exports = function(env) {
           }
         },
         {
-          test: /\.css$/,
-          exclude: /node_modules/,
+          test: /\.css$/,        
           use: [ 'style-loader', 'css-loader',
             {
               loader: 'postcss-loader',

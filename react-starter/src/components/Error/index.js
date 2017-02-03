@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavLink } from '../Links';
-
+import Spinner from '../LoadingSpinner';
 import styles from './style.scss';
 
 const ErrorPage = () => {
@@ -8,7 +7,7 @@ const ErrorPage = () => {
     <div class='err'>
       <h2>Oooops</h2>
       <p>This page does not exist</p>
-      <NavLink class='new-task' to='/main'>Back to main page</NavLink>
+      <Spinner />
     </div>
   );
 };
