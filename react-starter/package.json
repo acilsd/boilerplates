@@ -1,6 +1,6 @@
 {
   "name": "boilerplate",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "react-redux",
   "main": "index.js",
   "scripts": {
@@ -28,17 +28,17 @@
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "eslint": "^3.2.2",
-    "eslint-config-standard": "^6.2.1",
+    "eslint-config-standard": "^7.0.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-react": "^6.9.0",
     "eslint-plugin-standard": "^2.0.1",
-    "file-loader": "^0.9.0",
+    "file-loader": "^0.10.1",
     "node-normalize-scss": "^1.4.0",
     "node-sass": "^4.3.0",
     "postcss-loader": "^1.2.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "redux-logger": "^2.7.4",
-    "sass-loader": "^4.1.1",
+    "sass-loader": "^6.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack-bundle-analyzer": "^2.2.1"
