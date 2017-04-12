@@ -1,0 +1,16 @@
+.main-content {
+  
+}
+
+.article {
+
+  &__img {
+    float: left;
+    padding: 10px;
+  }
+  &::after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}

@@ -1,0 +1,96 @@
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  right: 22px;
+  top: 15px;
+  width: 30px;
+  z-index: 1000;
+  transition: all 200ms ease-in;
+  @media only screen and (max-width: 680px) {
+    display: block;
+  }
+  & span {
+    width: 30px;
+    height: 4px;
+    margin-bottom: 6px;
+    border-radius: 1000px;
+    background: $black;
+    display: block;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.active {
+    transform: rotate(-90deg);
+  }
+}
+
+.navigation {
+  width: 100%;
+  min-height: 55px;
+  background-color: $blue-gay;
+  z-index: 500;
+  top: 0;
+  left: 0;
+  &__menu {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    z-index: 500;
+    transition: all 1s ease;
+    @media only screen and (max-width: 680px) {
+      visibility: hidden;
+      max-height: 0;
+      opacity: 0;
+      &.active {
+        visibility: visible;
+        max-height: 1000px;
+        opacity: 1;
+        transition: all 1s ease;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  &__link {
+    width: 20%;
+    height: 55px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    line-height: 1.1em;
+    font-weight: normal;
+    font-family: inherit;
+    color: $black;
+    cursor: pointer;
+    @include center;
+    font-weight: 700;
+    transition: background-color 1s ease;
+    @media only screen and (max-width: 930px) {
+      font-size: 1em;
+      line-height: 1em;
+    }
+    @media only screen and (max-width: 695px) {
+      font-size: 0.9em;
+      line-height: 0.9em;
+    }
+    @media only screen and (max-width: 680px) {
+      width: 100%;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $blue-main;
+    }
+    &.active {
+      background-color: $blue-gay;
+      color: $white;
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+}
