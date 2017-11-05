@@ -1,13 +1,20 @@
 {
   "presets": [
-    ["es2015", { "modules": false }],
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
     "stage-0",
-    "react"
+    "react",
+    "flow"
   ],
   "plugins": [
+    "babel-polyfill",
     "react-hot-loader/babel",
-    "transform-class-properties",
-    "react-html-attrs",
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    "emotion",
+    "react-html-attrs"
   ]
 }

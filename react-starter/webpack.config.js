@@ -4,15 +4,6 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const autoprefixer = require('autoprefixer');
-function includePostCss() {
-  return [
-    autoprefixer({
-      browsers: ['last 2 versions', 'IE 10']
-    })
-  ];
-}
-
 const srcPath = path.join(__dirname, './src');
 const buildPath = path.join(__dirname, './public');
 
@@ -59,6 +50,7 @@ module.exports = function(env) {
           evaluate: true
         }
       }),
+      new webpack.optimize.ModuleConcatenationPlugin(),
       new CompressionPlugin({
         asset: "[path].gz[query]",
         algorithm: "gzip",
@@ -78,13 +70,16 @@ module.exports = function(env) {
     context: srcPath,
     entry: {
       app: [
+        'babel-polyfill',
         'react-hot-loader/patch',
         './index.js'
       ],
       vendor: [
         'react-hot-loader/patch',
         'react',
-        'react-dom'
+        'react-dom',
+        'redux',
+        'react-redux'
       ]
     },
     output: {
@@ -117,23 +112,6 @@ module.exports = function(env) {
           }
         },
         {
-          test: /\.css$/,        
-          use: [ 'style-loader', 'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: { plugins: includePostCss}
-            }, ]
-        },
-        {
-          test: /\.scss$/,
-          use: [ 'style-loader', 'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: { plugins: includePostCss}
-            },
-            'sass-loader' ]
-        },
-        {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: [ 'babel-loader' ],
@@ -145,7 +123,10 @@ module.exports = function(env) {
       modules: [
         path.resolve(__dirname, 'node_modules'),
         srcPath
-      ]
+      ],
+      alias: {
+        
+      }
     },
     plugins,
     stats: {

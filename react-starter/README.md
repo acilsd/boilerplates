@@ -7,14 +7,12 @@ If something works just fine why would you complicate it?
 ### Whats inside:
 
 *  React
+*  Flow
 *  Redux
 *  React-router
-*  Webpack 2
+*  Webpack 3???
 *  React-router v4
 *  React-hot-loader v3
-*  One-file prod'n'dev config
-*  Unit tests (deprecated and deleted for now)
-
 ---
 
 ### How can i make this work?
@@ -25,7 +23,10 @@ If something works just fine why would you complicate it?
 
 ---
 
-### Future improvements:
+### Important note:
 
-*  Switch to yarn for fuk sake (im too lazy, yep)
-*  Proper setup for testing
+Flow should be integrated in your IDE / TE of choice (check Nuclide (Atom) as the simpliest yet very powerful example). I'm too lazy to implement proper webpack / script flow-setup;
+
+### Important note#2:
+
+No css! I moved all my projects to css-in-js (styled-components, emotionjs). For proper setup of css/csspreprops/postcss webpack-loaders please check Webpack' official documentation (do not forget to install required packages, huh);

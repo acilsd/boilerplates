@@ -1,0 +1,16 @@
+[ignore]
+.*/node_modules/styled-components/.*
+<PROJECT_ROOT>/public/.*
+
+[libs]
+<PROJECT_ROOT>/flow-typed/
+
+[options]
+
+<--alias path example, delete this line (and this line, yeap)-->
+module.name_mapper='components' -> '<PROJECT_ROOT>/src/components/'
+<--!-->
+
+module.use_strict=true
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
