@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 /*
   global styles
 */
-import inject from 'helpers/global';
+import inject from './helpers/global';
 inject();
 /*
   store

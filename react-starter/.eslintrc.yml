@@ -15,7 +15,6 @@ parserOptions:
 plugins:
   - react
   - flowtype
-  - flow-vars
 rules:
   indent:
     - error
@@ -27,6 +26,8 @@ rules:
     - always
   no-console:
     - off
+  flowtype/define-flow-type: 1
+  flowtype/use-flow-type: 1
   flowtype/boolean-style: [2, boolean]
   flowtype/semi: [2, always]
   flowtype/space-after-type-colon: [2, always]
@@ -39,8 +40,6 @@ rules:
   flowtype/require-valid-file-annotation: 2
   flowtype/require-parameter-type: 1
   flowtype/require-return-type: [1, always, annotateUndefined: never]
-  flow-vars/define-flow-type: 1
-  flow-vars/use-flow-type: 1
   flowtype/valid-syntax: 1
 settings:
   flowtype:
