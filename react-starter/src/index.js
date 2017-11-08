@@ -1,33 +1,44 @@
-// NOTE: placeholder, this app is not working atm
 /* @flow */
-import 'react-hot-loader/patch';
 import 'babel-polyfill';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
+import { Provider } from 'react-redux';
+/*
+  global styles
+*/
+import inject from 'helpers/global';
+inject();
+/*
+  store
+*/
+import configureStore from './reduxStore';
+const store = configureStore();
+/*
+  entry point
+*/
+import MountPoint from './MountPoint';
 
-import foundation from 'foundation-sites/dist/css/foundation.min.css';
-
-import App from './components/App';
-
-const container = document.getElementById('container');
+const container: any = document.getElementById('container');
 
 const render = (Component: React.StatelessFunctionalComponent<*>) => {
   ReactDOM.render(
-    <AppContainer>
-      <Router>
-        <App />
-      </Router>
+    <AppContainer warnings={false}>
+      <Provider store={store}>
+        <Component />
+      </Provider>
     </AppContainer>,
     container
   );
 };
 
-render(App);
-
+render(MountPoint);
+/*
+  hotreload
+*/
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    render(App);
+  module.hot.accept('./MountPoint', () => {
+    const MountPoint = require('./MountPoint').default;
+    render(MountPoint);
   });
 }

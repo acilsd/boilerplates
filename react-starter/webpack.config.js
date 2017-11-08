@@ -125,7 +125,9 @@ module.exports = function(env) {
         srcPath
       ],
       alias: {
-        
+        components: path.join(__dirname, 'src/components'),
+        helpers: path.join(__dirname, 'src/helpers'),
+        layout: path.join(__dirname, 'src/layout'),
       }
     },
     plugins,
