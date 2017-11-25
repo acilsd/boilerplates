@@ -1,11 +1,14 @@
 [ignore]
-.*/node_modules/styled-components/.*
+.*/node_modules/emotion/.*
 <PROJECT_ROOT>/public/.*
 
 [libs]
 <PROJECT_ROOT>/flow-typed/
 
 [options]
+
+module.name_mapper='helpers' -> '<PROJECT_ROOT>/src/helpers/'
+
 module.use_strict=true
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable

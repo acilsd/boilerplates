@@ -3,7 +3,14 @@
     [
       "env",
       {
-        "modules": false
+        "modules": false,
+        "targets": {
+          "chrome": "55",
+          "edge": "14",
+          "firefox": "54",
+          "safari": "10.1",
+          "opera": "42"
+        }
       }
     ],
     "stage-0",
@@ -13,7 +20,6 @@
   "plugins": [
     "babel-polyfill",
     "react-hot-loader/babel",
-    "transform-decorators-legacy",
     "emotion",
     "react-html-attrs"
   ]

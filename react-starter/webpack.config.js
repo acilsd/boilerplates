@@ -3,6 +3,20 @@ const path = require('path');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+/*
+* autoprefixer
+*/
+
+// const autoprefixer = require('autoprefixer');
+// function includePostCss() {
+//   return [
+//     autoprefixer({
+//       browsers: ['last 2 versions', 'IE 10']
+//     })
+//   ];
+// }
 
 const srcPath = path.join(__dirname, './src');
 const buildPath = path.join(__dirname, './public');
@@ -30,26 +44,33 @@ module.exports = function(env) {
         minimize: true,
         debug: false
       }),
-      new webpack.optimize.UglifyJsPlugin({
-        beautify: false,
-        comments: false,
-        mangle: true,
-        sourcemap: false,
-        compress: {
-          booleans: true,
-          conditionals: true,
-          dead_code: true,
-          drop_console: true,
-          if_return: true,
-          join_vars: true,
-          sequences: true,
-          unused: true,
-          warnings: false,
-          screw_ie8: true,
-          comparisons: true,
-          evaluate: true
-        }
-      }),
+      /*
+      * new Uglify can optimize unparsed ES6
+      */
+      new UglifyJsPlugin(),
+      /*
+      * this is plain old uglify, optimizing transpiled ES5, uncomment this if you are targeting older browsers
+      */
+      // new webpack.optimize.UglifyJsPlugin({
+      //   beautify: false,
+      //   comments: false,
+      //   mangle: true,
+      //   sourcemap: false,
+      //   compress: {
+      //     booleans: true,
+      //     conditionals: true,
+      //     dead_code: true,
+      //     drop_console: true,
+      //     if_return: true,
+      //     join_vars: true,
+      //     sequences: true,
+      //     unused: true,
+      //     warnings: false,
+      //     screw_ie8: true,
+      //     comparisons: true,
+      //     evaluate: true
+      //   }
+      // }),
       new webpack.optimize.ModuleConcatenationPlugin(),
       new CompressionPlugin({
         asset: "[path].gz[query]",
@@ -70,11 +91,13 @@ module.exports = function(env) {
     context: srcPath,
     entry: {
       app: [
-        'babel-polyfill',
         'react-hot-loader/patch',
         './index.js'
       ],
       vendor: [
+        /*
+        * extract libs to separate bundle, you can add any more libs you want
+        */
         'react-hot-loader/patch',
         'react',
         'react-dom',
@@ -90,12 +113,9 @@ module.exports = function(env) {
     module: {
       rules: [
         {
-          test: /\.html$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: {
-            loader: 'file-loader',
-            query: { name: '[name].[ext]' },
-          },
+          use: [ 'babel-loader' ],
         },
         {
           test: /\.(jpg|jpeg|gif|png)$/,
@@ -111,11 +131,26 @@ module.exports = function(env) {
             query: { limit: 10000, name: '[fonts/[name].[ext]]' }
           }
         },
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: [ 'babel-loader' ],
-        },
+        /*
+          uncomment if you need css
+        */
+        // {
+        //   test: /\.css$/,
+        //   use: [ 'style-loader', 'css-loader',
+        //     {
+        //       loader: 'postcss-loader',
+        //       // options: { plugins: includePostCss}
+        //     }, ]
+        // },
+        // {
+        //   test: /\.scss$/,
+        //   use: [ 'style-loader', 'css-loader',
+        //     {
+        //       loader: 'postcss-loader',
+        //       // options: { plugins: includePostCss}
+        //     },
+        //     'sass-loader' ]
+        // },
       ],
     },
     resolve: {
@@ -125,9 +160,7 @@ module.exports = function(env) {
         srcPath
       ],
       alias: {
-        components: path.join(__dirname, 'src/components'),
-        helpers: path.join(__dirname, 'src/helpers'),
-        layout: path.join(__dirname, 'src/layout'),
+        helpers: path.join(__dirname, 'src/helpers')
       }
     },
     plugins,
@@ -140,7 +173,7 @@ module.exports = function(env) {
       contentBase: './public',
       publicPath: '/',
       historyApiFallback: true,
-      port: 8080,
+      port: 8888,
       compress: TO_PROD,
       inline: true,
       hot: true,
