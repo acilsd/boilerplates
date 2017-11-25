@@ -35,7 +35,7 @@ module.exports = function(env) {
       minChunks: Infinity,
       filename: 'vendor.bundle.js'
     }),
-    //new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin()
   ];
 
   if (TO_PROD) {
@@ -47,7 +47,14 @@ module.exports = function(env) {
       /*
       * new Uglify can optimize unparsed ES6
       */
-      new UglifyJsPlugin(),
+      new UglifyJsPlugin({
+        parallel: 4,
+        uglifyOptions: {
+          ie8: false,
+          ecma: 8,
+          warnings: false
+        }
+      }),
       /*
       * this is plain old uglify, optimizing transpiled ES5, uncomment this if you are targeting older browsers
       */
