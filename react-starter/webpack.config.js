@@ -35,7 +35,7 @@ module.exports = function(env) {
       minChunks: Infinity,
       filename: 'vendor.bundle.js'
     }),
-    new BundleAnalyzerPlugin()
+    //new BundleAnalyzerPlugin()
   ];
 
   if (TO_PROD) {
